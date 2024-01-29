@@ -127,3 +127,38 @@ def count_sort(arr):
             i += 1
             yield arr
         yield arr
+n = int(input("Enter the number of elements: "))
+al = int(input("Choose algorithm:\n 1. Bubble \n 2. Insertion Sort \n 3. Quick Sort \n 4. Selection Sort \n 5. Merge Sort \n 6. Heap Sort \n 7. Shell Sort \n 8. Count Sort \n "))
+array = [i + 1 for i in range(n)]
+random.shuffle(array)
+if(al==1):
+  title = "Bubble Sort"
+  algo = sort_bubble(array)
+elif(al==2):
+  title = "Count Sort"
+  algo = count_sort(array)
+elif(al==3):
+  title = "Heap Sort"
+  algo = heap_sort(array)
+elif(al==4):
+  title = "Insertion Sort"
+  algo = insertion_sort(array)
+elif (al == 5):
+  title = "Merge Sort"
+  algo=merge_sort(array,0,n-1)
+elif (al == 6):
+  title="Selection Sort"
+  algo = selection_sort(array)
+elif (al == 7):
+  title = "Shell Sort"
+  algo = shell_sort(array)
+elif (al == 8):
+  title = "Quick Sort"
+  algo = qsort(array,0,n-1)
+fig, ax = plt.subplots()
+ax.set_title(title)
+bar_rec = ax.bar(range(len(array)), array, align='edge')
+ax.set_xlim(0, n)
+ax.set_ylim(0, int(n * 1.1))
+text = ax.text(0.02, 0.95, "", transform=ax.transAxes)
+epochs = [0]
