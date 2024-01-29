@@ -162,3 +162,10 @@ ax.set_xlim(0, n)
 ax.set_ylim(0, int(n * 1.1))
 text = ax.text(0.02, 0.95, "", transform=ax.transAxes)
 epochs = [0]
+def update_plot(array, rec, epochs):
+    for rec, val in zip(rec, array):
+        rec.set_height(val)
+    epochs[0]+= 1
+    text.set_text("Total Operations: {}".format(epochs[0]))
+anima = anim.FuncAnimation(fig, func=update_plot, fargs=(bar_rec, epochs), frames=algo, interval=1, repeat=False)
+plt.show()
