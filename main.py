@@ -89,3 +89,41 @@ def heapify(arr,n,i):
         swap(arr,i,largest)
         yield arr
         yield from heapify(arr,n,largest)
+def heap_sort(arr):
+    n = len(arr)
+    for i in range(n,-1,-1):
+        yield from heapify(arr,n,i)
+    for i in range(n-1,0,-1):
+        swap(arr,0,i)
+        yield arr
+        yield from heapify(arr,i,0)
+def shell_sort(arr):
+    sublistcount = len(arr) // 2
+    while sublistcount > 0:
+      for start_position in range(sublistcount):
+        yield  from gap_InsertionSort(arr, start_position, sublistcount)
+      sublistcount = sublistcount // 2
+def gap_InsertionSort(nlist,start,gap):
+    for i in range(start+gap,len(nlist),gap):
+        current_value = nlist[i]
+        position = i
+        while position>=gap and nlist[position-gap]>current_value:
+            nlist[position]=nlist[position-gap]
+            position = position-gap
+            yield nlist
+        nlist[position]=current_value
+        yield nlist
+def count_sort(arr):
+    max_val = max(arr)
+    m = max_val + 1
+    count = [0] * m
+    for a in arr:
+        count[a] += 1
+        yield arr
+    i = 0
+    for a in range(m):
+        for c in range(count[a]):
+            arr[i] = a
+            i += 1
+            yield arr
+        yield  arr
