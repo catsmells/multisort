@@ -126,4 +126,4 @@ def count_sort(arr):
             arr[i] = a
             i += 1
             yield arr
-        yield  arr
+        yield arr
