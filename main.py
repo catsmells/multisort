@@ -147,7 +147,7 @@ elif (al == 5):
   title = "Merge Sort"
   algo=merge_sort(array,0,n-1)
 elif (al == 6):
-  title="Selection Sort"
+  title= "Selection Sort"
   algo = selection_sort(array)
 elif (al == 7):
   title = "Shell Sort"
